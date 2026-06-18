@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JM Advocacia | Elite Legal Services</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Calendly -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<style>
+:root {
+  --primary: #e10600;
+  --primary-dark: #b30400;
+  --gold: #c9a96e;
+  --gold-light: #e8d5a3;
+  --bg-dark: #0a0a0a;
+  --bg-card: rgba(255,255,255,0.03);
+  --text-light: #ffffff;
+  --text-muted: rgba(255,255,255,0.7);
+  --border-glow: rgba(225, 6, 0, 0.3);
+  --shadow-glow: 0 0 40px rgba(225, 6, 0, 0.1);
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+
+/* Loader */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.8s ease;
+}
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loader-ring {
+  width: 60px;
+  height: 60px;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--primary);
+  border-right: 3px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 60px;
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: var(--transition-smooth);
+}
+nav.scrolled {
+  background: rgba(10,10,10,0.95);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+nav .logo i {
+  color: var(--primary);
+  font-size: 24px;
+}
+nav .logo h1 {
+  font-size: 18px;
+  letter-spacing: 4px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 30%, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+nav .nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+nav .nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: var(--transition-smooth);
+}
+nav .nav-links a:hover {
+  color: #fff;
+}
+nav .nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.nav-toggle span {
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  transition: var(--transition-smooth);
+}
+
+/* HERO - Versão Limpa */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 20px 60px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(225,6,0,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(201,169,110,0.04) 0%, transparent 50%),
+    var(--bg-dark);
+}
+
+.hero-content {
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .badge {
+  display: inline-block;
+  background: rgba(225,6,0,0.12);
+  border: 1px solid rgba(225,6,0,0.2);
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+  font-size: clamp(40px, 7vw, 68px);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--primary), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.cta-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btn {
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.btn-large {
+  padding: 16px 36px;
+  font-size: 16px;
+  border-radius: 14px;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 4px 30px rgba(225,6,0,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 45px rgba(225,6,0,0.5);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+}
+.btn-secondary:hover {
+  border-color: var(--primary);
+  background: rgba(225,6,0,0.1);
+  transform: translateY(-3px);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), #a8894e);
+  color: #0a0a0a;
+}
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 40px rgba(201,169,110,0.3);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat .number {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.stat .label {
+  font-size: 13px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* SECTION GERAL */
+.section {
+  padding: 100px 60px;
+  position: relative;
+}
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+.section-header .tag {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-header h3 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.section-header p {
+  opacity: 0.7;
+  margin-top: 16px;
+  font-size: 17px;
+}
+
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 35px 30px;
+  border-radius: 20px;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+.card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(225,6,0,0.2);
+  box-shadow: var(--shadow-glow);
+}
+.card:hover::before {
+  opacity: 1;
+}
+.card .icon {
+  font-size: 36px;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+.card h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: 14px;
+  opacity: 0.7;
+  line-height: 1.7;
+}
+
+/* CASES */
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.case-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 30px;
+  border-radius: 16px;
+  transition: var(--transition-smooth);
+}
+.case-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
+.case-item .status {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.case-item .status.resolvido {
+  background: rgba(46, 213, 115, 0.15);
+  color: #2ed573;
+}
+.case-item .status.andamento {
+  background: rgba(255, 165, 0, 0.15);
+  color: #ffa500;
+}
+.case-item h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+.case-item p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* TESTIMONIALS */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.testimonial-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 16px;
+  transition: var(--transition-smooth);
+}
+.testimonial-item:hover {
+  border-color: rgba(201,169,110,0.3);
+}
+.testimonial-item .quote {
+  font-size: 28px;
+  color: var(--gold);
+  opacity: 0.3;
+  margin-bottom: 10px;
+}
+.testimonial-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.8;
+}
+.testimonial-item .author {
+  margin-top: 16px;
+  font-weight: 600;
+  color: var(--gold);
+}
+.testimonial-item .author span {
+  font-weight: 400;
+  opacity: 0.5;
+  font-size: 13px;
+}
+
+/* CALENDAR */
+.calendar-section {
+  background: radial-gradient(ellipse at center, rgba(225,6,0,0.05), transparent);
+  padding: 100px 60px;
+  text-align: center;
+}
+.calendar-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+}
+.calendar-wrapper .calendly-inline-widget {
+  min-width: 320px;
+  height: 700px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* CONTACT */
+.contact-section {
+  padding: 100px 60px;
+  background: radial-gradient(ellipse at 30% 50%, rgba(225,6,0,0.03), transparent);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.contact-info .tag {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.contact-info h3 {
+  font-size: 32px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+.contact-info p {
+  opacity: 0.7;
+  line-height: 1.8;
+}
+.contact-info .info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+.contact-info .info-item i {
+  width: 44px;
+  height: 44px;
+  background: rgba(225,6,0,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 18px;
+}
+.contact-info .info-item strong {
+  display: block;
+}
+.contact-info .info-item p {
+  margin: 0;
+  opacity: 0.7;
+}
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.social-links a {
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+  font-size: 20px;
+}
+.social-links a:hover {
+  color: var(--gold);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  margin: 8px 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  border-radius: 12px;
+  outline: none;
+  transition: var(--transition-smooth);
+  font-size: 14px;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(225,6,0,0.1);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contact-form .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* FAQ */
+.faq-grid {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 20px 0;
+  cursor: pointer;
+}
+.faq-item .question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+.faq-item .question i {
+  transition: var(--transition-smooth);
+}
+.faq-item .answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+.faq-item.active .answer {
+  max-height: 200px;
+  opacity: 0.7;
+  padding-top: 12px;
+}
+.faq-item.active .question i {
+  transform: rotate(180deg);
+}
+
+/* FOOTER */
+footer {
+  background: #050505;
+  padding: 60px 60px 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-brand h4 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.footer-brand p {
+  opacity: 0.6;
+  font-size: 14px;
+  max-width: 300px;
+}
+.footer-links h5 {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--gold);
+}
+.footer-links a {
+  display: block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 4px 0;
+  transition: var(--transition-smooth);
+}
+.footer-links a:hover {
+  color: #fff;
+}
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+/* ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 16px 20px;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(10,10,10,0.98);
+    flex-direction: column;
+    padding: 80px 30px;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(20px);
+  }
+  .nav-links.open {
+    right: 0;
+  }
+  .section {
+    padding: 60px 20px;
+  }
+  .calendar-section,
+  .contact-section {
+    padding: 60px 20px;
+  }
+  .calendar-wrapper {
+    padding: 20px;
+  }
+  .hero-stats {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .stat-divider {
+    display: none;
+  }
+  .stat .number {
+    font-size: 22px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+  .cta-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-large {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 12px 24px;
+    font-size: 13px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-ring"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">
+    <i class="fas fa-scale-balanced"></i>
+    <h1>JM ADVOCACIA</h1>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#servicos">Serviços</a>
+    <a href="#casos">Casos</a>
+    <a href="#calendario">Agendar</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">
+      <i class="fas fa-star" style="color: var(--gold);"></i>
+      Advocacia de Excelência
+    </div>
+    
+    <h1>
+      Defesa Jurídica de<br>
+      <span class="highlight">Alto Nível</span>
+    </h1>
+    
+    <p class="hero-description">
+      Estratégia legal, precisão técnica e acompanhamento absoluto. 
+      Protegemos os teus direitos com excelência e compromisso.
+    </p>
+    
+    <div class="cta-group">
+      <a href="#calendario" class="btn btn-primary btn-large">
+        <i class="fas fa-calendar-check"></i> Agendar Consulta
+      </a>
+      <a href="https://wa.me/244925461400" class="btn btn-secondary btn-large">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+    
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="number" data-count="500">0</span>
+        <span class="label">Casos Resolvidos</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="number" data-count="98">0%</span>
+        <span class="label">Taxa de Sucesso</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="number" data-count="15">0</span>
+        <span class="label">Anos de Experiência</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="section" id="servicos">
+  <div class="section-header reveal">
+    <div class="tag">Áreas de Atuação</div>
+    <h3>Excelência em <span style="color: var(--gold);">Todas as Frentes</span></h3>
+    <p>Atuação estratégica nas principais áreas do direito, sempre com foco em resultados.</p>
+  </div>
+  <div class="grid">
+    <div class="card reveal reveal-delay-1">
+      <div class="icon"><i class="fas fa-gavel"></i></div>
+      <h4>Direito Civil</h4>
+      <p>Contratos, litígios, indemnizações e defesa patrimonial com precisão técnica.</p>
+    </div>
+    <div class="card reveal reveal-delay-2">
+      <div class="icon"><i class="fas fa-handcuffs"></i></div>
+      <h4>Direito Penal</h4>
+      <p>Defesa estratégica em processos criminais complexos, garantindo os teus direitos.</p>
+    </div>
+    <div class="card reveal reveal-delay-3">
+      <div class="icon"><i class="fas fa-briefcase"></i></div>
+      <h4>Direito do Trabalho</h4>
+      <p>Proteção de trabalhadores e empresas com rigor legal e justiça social.</p>
+    </div>
+    <div class="card reveal reveal-delay-4">
+      <div class="icon"><i class="fas fa-building"></i></div>
+      <h4>Consultoria Empresarial</h4>
+      <p>Estruturação jurídica para negócios, investimentos e gestão de riscos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASOS -->
+<section class="section" id="casos" style="background: rgba(255,255,255,0.01);">
+  <div class="section-header reveal">
+    <div class="tag">Resultados Reais</div>
+    <h3>Casos que <span style="color: var(--gold);">Fizeram História</span></h3>
+    <p>Alguns dos nossos casos mais marcantes que comprovam a nossa excelência.</p>
+  </div>
+  <div class="case-grid">
+    <div class="case-item reveal reveal-delay-1">
+      <span class="status resolvido"><i class="fas fa-check-circle"></i> Resolvido</span>
+      <h4>Disputa Contratual</h4>
+      <p>Resolução de litígio empresarial com acordo favorável ao cliente em apenas 14 dias.</p>
+    </div>
+    <div class="case-item reveal reveal-delay-2">
+      <span class="status resolvido"><i class="fas fa-check-circle"></i> Resolvido</span>
+      <h4>Defesa Criminal</h4>
+      <p>Redução significativa de pena através de estratégia de defesa técnica e inovadora.</p>
+    </div>
+    <div class="case-item reveal reveal-delay-3">
+      <span class="status andamento"><i class="fas fa-clock"></i> Em Andamento</span>
+      <h4>Litígio Internacional</h4>
+      <p>Proteção jurídica de empresa angolana em disputa comercial com multinacional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTEMUNHOS -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="tag">Depoimentos</div>
+    <h3>O que os <span style="color: var(--gold);">Clientes Dizem</span></h3>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-item reveal reveal-delay-1">
+      <div class="quote"><i class="fas fa-quote-left"></i></div>
+      <p>"Profissionais extremamente sérios e eficazes. Resolveram meu caso rapidamente e com total transparência."</p>
+      <div class="author">Carlos M. <span>• Empresário</span></div>
+    </div>
+    <div class="testimonial-item reveal reveal-delay-2">
+      <div class="quote"><i class="fas fa-quote-left"></i></div>
+      <p>"Estratégia impecável. Senti segurança do início ao fim. Recomendo a todos que buscam excelência jurídica."</p>
+      <div class="author">Ana S. <span>• Executiva</span></div>
+    </div>
+    <div class="testimonial-item reveal reveal-delay-3">
+      <div class="quote"><i class="fas fa-quote-left"></i></div>
+      <p>"Advocacia de alto nível, comunicação clara e resultados reais. A JM Advocacia é referência em Angola."</p>
+      <div class="author">João P. <span>• Advogado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDÁRIO -->
+<section class="calendar-section" id="calendario">
+  <div class="section-header reveal">
+    <div class="tag">Agendamento</div>
+    <h3>Marque sua <span style="color: var(--gold);">Consulta</span></h3>
+    <p>Escolha o dia e horário mais conveniente. Atendimento presencial ou online.</p>
+  </div>
+  <div class="calendar-wrapper reveal">
+    <div class="calendly-inline-widget" 
+         data-url="https://calendly.com/kamoshunico/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=e10600">
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background: rgba(255,255,255,0.01);">
+  <div class="section-header reveal">
+    <div class="tag">Dúvidas Frequentes</div>
+    <h3>Perguntas <span style="color: var(--gold);">Frequentes</span></h3>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item active reveal">
+      <div class="question">
+        <span>Como funciona a primeira consulta?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer">A primeira consulta é um momento de análise do seu caso, onde ouvimos a sua situação, fazemos uma avaliação preliminar e traçamos as melhores estratégias. Dura aproximadamente 1 hora.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="question">
+        <span>Qual o custo dos serviços?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer">Os honorários variam conforme a complexidade do caso. Trabalhamos com diferentes modelos: consultoria por hora, projeto fechado ou porcentagem sobre o valor da causa. Na consulta inicial, apresentamos uma proposta detalhada.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="question">
+        <span>Atendem presencialmente ou online?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer">Oferecemos ambas as modalidades. Atendemos presencialmente em Luanda e também realizamos consultas online para clientes de outras províncias ou no exterior.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="question">
+        <span>Quanto tempo demora um processo?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer">O tempo varia conforme a natureza do caso e o andamento do sistema judicial. Nossa equipe trabalha para acelerar ao máximo cada processo, mantendo sempre a qualidade técnica.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact-section" id="contacto">
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="tag">Contacto</div>
+      <h3>Vamos <span style="color: var(--gold);">Conversar</span></h3>
+      <p>
+        Estamos prontos para ouvir o seu caso e encontrar a melhor solução jurídica. 
+        Entre em contacto pelos canais abaixo ou preencha o formulário.
+      </p>
+      <div class="info-item">
+        <i class="fas fa-phone"></i>
+        <div>
+          <strong>Telefone</strong>
+          <p>+244 925 461 400</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <strong>Email</strong>
+          <p>geral@jmadvocacia.ao</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <strong>Localização</strong>
+          <p>Luanda, Angola</p>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/244925461400"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-2">
+      <form id="contactForm" onsubmit="handleFormSubmit(event)">
+        <input type="text" placeholder="Nome completo" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Telefone">
+        <textarea rows="5" placeholder="Descreve o teu caso em detalhe..." required></textarea>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-paper-plane"></i> Enviar Pedido
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h4><i class="fas fa-scale-balanced" style="color: var(--primary);"></i> JM Advocacia</h4>
+      <p>Excelência jurídica com compromisso, ética e resultados. Protegemos os teus direitos como se fossem os nossos.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Navegação</h5>
+      <a href="#servicos">Serviços</a>
+      <a href="#casos">Casos</a>
+      <a href="#calendario">Agendar</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-links">
+      <h5>Áreas</h5>
+      <a href="#servicos">Direito Civil</a>
+      <a href="#servicos">Direito Penal</a>
+      <a href="#servicos">Direito do Trabalho</a>
+      <a href="#servicos">Consultoria</a>
+    </div>
+    <div class="footer-links">
+      <h5>Contacto</h5>
+      <a href="tel:+244925461400">+244 925 461 400</a>
+      <a href="mailto:geral@jmadvocacia.ao">geral@jmadvocacia.ao</a>
+      <a href="https://wa.me/244925461400">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 JM Advocacia — Elite Legal Services. Todos os direitos reservados.
+  </div>
+</footer>
+
+<script>
+// LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 800);
+});
+
+// NAVBAR SCROLL
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// MOBILE NAV
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});
+
+// SCROLL REVEAL
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// STATS COUNTER
+const stats = document.querySelectorAll('.stat .number');
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target;
+      const count = parseInt(target.dataset.count);
+      let current = 0;
+      const increment = count / 60;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= count) {
+          target.textContent = count + (count === 98 ? '%' : '+');
+          clearInterval(timer);
+        } else {
+          target.textContent = Math.floor(current) + (count === 98 ? '%' : '');
+        }
+      }, 20);
+      statsObserver.unobserve(target);
+    }
+  });
+}, { threshold: 0.5 });
+
+stats.forEach(stat => statsObserver.observe(stat));
+
+// FAQ ACCORDION
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
+  });
+});
+
+// FORM SUBMIT
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalText = btn.innerHTML;
+  
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> A enviar...';
+  btn.disabled = true;
+  
+  setTimeout(() => {
+    btn.innerHTML = '<i class="fas fa-check"></i> Enviado com sucesso!';
+    btn.style.background = '#2ed573';
+    
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }, 2000);
+}
+
+// CALENDLY
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.Calendly) {
+    window.Calendly.initInlineWidget({
+      url: 'https://calendly.com/kamoshunico/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=e10600',
+      parentElement: document.querySelector('.calendly-inline-widget'),
+      prefill: {}
+    });
+  }
+});
+</script>
+</body>
+</html>
